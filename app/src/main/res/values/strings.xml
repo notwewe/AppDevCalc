@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="zed">purbleshark</string>
+    <string name="zed1">zedavi</string>
+    <string name="feli">jinjaboyah</string>
+    <string name="zak">_angkaz</string>
+    <string name="laine">hulyarein</string>
+    <string name="tristan">trgger</string>
+    <string name="me">wewedemeyer</string>
+    <string name="me1">laketurtle</string>
+    <string name="kc">kc</string>
+    <string name="jon">_jon.jones</string>
+    <string name="likes">24243 likes</string>
+    <string name="teddy">juduka_teddy</string>
+    <string name="mama">kikay_nacua</string>
+    <string name="layoutact">LAYOUT ACTIVITY</string>
+    <string name="like">Like</string>
+    <string name="comm">Comment</string>
+    <string name="share">Share</string>
+    <string name="IG">INSTAGRAM</string>
+    <string name="HIDE">HIDE</string>
+    <string name="EXT">EXIT</string>
+    <string name="TST">TOAST</string>
+    <string name="btnexer">BUTTON EXERCISE</string>
+    <string name="BGCOLOR">BACKGROUND COLOR</string>
+    <string name="btnbgcolor">BUTTON COLOR</string>
+    <string name="btncalc">CALCULATOR</string>
+
+
+</resources>
