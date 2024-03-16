@@ -1,208 +1,210 @@
-// CalculatorExercise.java
-
 package com.example.androidprojectcollection;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import java.text.DecimalFormat;
-import java.util.Stack;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CalculatorExercise extends AppCompatActivity {
-    private TextView Recall;
-    private TextView Result;
-    private Button btn0;
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
-    private Button btnPlus;
-    private Button btnMinus;
-    private Button btnMult;
-    private Button btnDiv;
-    private Button btnDec;
-    private Button btnEq;
-    private Boolean numAv = false;
+    private TextView recall;
+    private TextView result;
+    private boolean decimalAdded = false; // Flag to track if decimal has been added
 
-    CalculatorExerciseObject calculatorObject;
-
+    private CalculatorExerciseObject calculatorExerciseObject;
+    private String checkLast; // Declare checkLast variable
+    private boolean checkDec; // Declare checkDec variable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator_exercise);
 
-        Recall = findViewById(R.id.Rev);
-        Result = findViewById(R.id.Result);
-        btn0 = findViewById(R.id.num0);
-        btn1 = findViewById(R.id.num1);
-        btn2 = findViewById(R.id.num2);
-        btn3 = findViewById(R.id.num3);
-        btn4 = findViewById(R.id.num4);
-        btn5 = findViewById(R.id.num5);
-        btn6 = findViewById(R.id.num6);
-        btn7 = findViewById(R.id.num7);
-        btn8 = findViewById(R.id.num8);
-        btn9 = findViewById(R.id.num9);
-        btnPlus = findViewById(R.id.opPlus);
-        btnMinus = findViewById(R.id.opMinus);
-        btnMult = findViewById(R.id.opMult);
-        btnDiv = findViewById(R.id.opDiv);
-        btnDec = findViewById(R.id.decimal);
-        btnEq = findViewById(R.id.Equals);
+        recall = findViewById(R.id.Rev);
+        result = findViewById(R.id.Result);
 
-        calculatorObject = new CalculatorExerciseObject(this);
+        // Instantiate the CalculatorExerciseObject
+        calculatorExerciseObject = new CalculatorExerciseObject(this);
 
-        // Remaining code...
+        // Add button click listeners
+        Button btn0 = findViewById(R.id.num0);
+        btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("0");
+                calculatorExerciseObject.updateResult();
+            }
+        });
 
-        // You may add any other initialization or setup code here
+        Button btn1 = findViewById(R.id.num1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("1");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn2 = findViewById(R.id.num2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("2");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn3 = findViewById(R.id.num3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("3");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn4 = findViewById(R.id.num4);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("4");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn5 = findViewById(R.id.num5);
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("5");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn6 = findViewById(R.id.num6);
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("6");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn7 = findViewById(R.id.num7);
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("7");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn8 = findViewById(R.id.num8);
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("8");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btn9 = findViewById(R.id.num9);
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("9");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnPlus = findViewById(R.id.opPlus);
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("+");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnMinus = findViewById(R.id.opMinus);
+        btnMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("-");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnMult = findViewById(R.id.opMult);
+        btnMult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("x");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnDiv = findViewById(R.id.opDiv);
+        btnDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall.append("/");
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnDec = findViewById(R.id.decimal);
+        btnDec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!decimalAdded) {
+                    recall.append(".");
+                    decimalAdded = true;
+                } else {
+                    String currentExpression = recall.getText().toString();
+                    if (currentExpression.endsWith(".")) {
+                        // Remove the last character (the decimal point)
+                        recall.setText(currentExpression.substring(0, currentExpression.length() - 1));
+                        decimalAdded = false;
+                    }
+                }
+                calculatorExerciseObject.updateResult();
+            }
+        });
+
+        Button btnEq = findViewById(R.id.Equals);
+        btnEq.setOnClickListener(onClickListener);
     }
 
-    // The rest of your methods go here...
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            if (buttonText.equals("=")) {
+                String expression = recall.getText().toString();
+                try {
+                    double res = calculatorExerciseObject.evaluateExpression(expression);
+                    String formattedResult = calculatorExerciseObject.formatResult(res);
+                    recall.setText("");
+                    result.setText(formattedResult);
+                    decimalAdded = false; // Reset flag after result
+                } catch (Exception e) {
+                    result.setText("Invalid");
+                    decimalAdded = false; // Reset flag if expression is invalid
+                }
+            } else {
+                recall.append(buttonText);
+                calculatorExerciseObject.updateResult();
+            }
+        }
+    };
 
+        // Add getter methods for recall and result TextViews
     public TextView getRecall() {
-        return Recall;
+        return recall;
     }
 
     public TextView getResult() {
-        return Result;
-    }
-    private double evaluateExpression (String expression){
-
-        String[] tokens = expression.split("(?=[+\\-x/])|(?<=[+\\-x/])");
-
-
-        double result = Double.parseDouble(tokens[0]);
-        char operator = ' ';
-
-
-        for (int i = 1; i < tokens.length; i++) {
-
-            if (tokens[i].matches("[+\\-x/]")) {
-                operator = tokens[i].charAt(0);
-            } else {
-
-                double operand = Double.parseDouble(tokens[i]);
-                switch (operator) {
-                    case '+':
-                        result += operand;
-                        break;
-                    case '-':
-                        result -= operand;
-                        break;
-                    case 'x':
-                        result *= operand;
-                        break;
-                    case '/':
-
-                        if (operand == 0) {
-                            throw new ArithmeticException("Division by zero");
-                        }
-                        result /= operand;
-                        break;
-                }
-            }
-        }
         return result;
-    }
-    private String formatResult ( double result){
-        // Check if the result has decimal places
-        if (result == (long) result) {
-            // If the result is an integer, remove the decimal part
-            return String.format("%d", (long) result);
-        } else {
-
-            DecimalFormat decimalFormat = new DecimalFormat("#.##########");
-            return decimalFormat.format(result);
-        }
-    }
-    private void updateResult () {
-        String expression = Recall.getText().toString();
-        if (expression.contains("+") || expression.contains("-") || expression.contains("x") || expression.contains("/")) {
-            try {
-                double result = evaluateExpression(expression);
-                String formattedResult = formatResult(result);
-                Result.setText(formattedResult);
-            } catch (Exception e) {
-                Result.setText("");
-            }
-        } else {
-            Result.setText("");
-        }
-    }
-
-    private Double ActualResult (String expression){
-        expression = expression.replaceAll("\\s+", "");
-
-
-        String[] tokens = expression.split("(?<=[-+x/()])|(?=[-+x/()])");
-
-
-        Stack<Double> numbers = new Stack<>();
-        Stack<Character> operators = new Stack<>();
-
-
-        for (String token : tokens) {
-
-            if (token.matches("[0-9]+")) {
-                numbers.push(Double.parseDouble(token));
-            } else if (token.equals("(")) {
-                operators.push(token.charAt(0));
-            } else if (token.equals(")")) {
-
-                while (!operators.isEmpty() && operators.peek() != '(') {
-                    evaluateOperator(numbers, operators);
-                }
-                operators.pop(); // Remove the '('
-            } else {
-                while (!operators.isEmpty() && Precedence(token.charAt(0), operators.peek())) {
-                    evaluateOperator(numbers, operators);
-                }
-                operators.push(token.charAt(0));
-            }
-        }
-
-        while (!operators.isEmpty()) {
-            evaluateOperator(numbers, operators);
-        }
-        return numbers.pop();
-
-    }
-    private void evaluateOperator (Stack < Double > numbers, Stack < Character > operators){
-        char operator = operators.pop();
-        double num2 = numbers.pop();
-        double num1 = numbers.pop();
-        double result;
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case 'x':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 == 0) {
-                    throw new ArithmeticException("Division by zero");
-                }
-                result = num1 / num2;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid operator");
-        }
-        numbers.push(result);
-    }
-    private boolean Precedence(char op1, char op2) {
-        if (op2 == '(' || op2 == ')') {
-            return false;
-        }
-        return (op1 != 'x' && op1 != '/') || (op2 != '+' && op2 != '-');
     }
 }
