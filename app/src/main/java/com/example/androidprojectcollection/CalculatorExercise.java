@@ -120,7 +120,21 @@ public class CalculatorExercise extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recall.append("+");
+                String text = recall.getText().toString();
+                if (text.isEmpty()) {
+                    // If recall is empty, just append '-'.
+//                    recall.append("+");
+
+                } else {
+                    char lastChar = text.charAt(text.length() - 1);
+                    if (isOperator(lastChar)) {
+                        // If last character is an operator, replace it with '-'.
+                        recall.setText(text.substring(0, text.length() - 1) + "+");
+                    } else {
+                        // Otherwise, just append '-'.
+                        recall.append("+");
+                    }
+                }
                 calculatorExerciseObject.updateResult();
             }
         });
@@ -129,7 +143,20 @@ public class CalculatorExercise extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recall.append("-");
+                String text = recall.getText().toString();
+                if (text.isEmpty()) {
+                    // If recall is empty, just append '-'.
+//                    recall.append("-");
+                } else {
+                    char lastChar = text.charAt(text.length() - 1);
+                    if (isOperator(lastChar)) {
+                        // If last character is an operator, replace it with '-'.
+                        recall.setText(text.substring(0, text.length() - 1) + "-");
+                    } else {
+                        // Otherwise, just append '-'.
+                        recall.append("-");
+                    }
+                }
                 calculatorExerciseObject.updateResult();
             }
         });
@@ -138,7 +165,20 @@ public class CalculatorExercise extends AppCompatActivity {
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recall.append("x");
+                String text = recall.getText().toString();
+                if (text.isEmpty()) {
+                    // If recall is empty, just append '-'.
+//                    recall.append("*");
+                } else {
+                    char lastChar = text.charAt(text.length() - 1);
+                    if (isOperator(lastChar)) {
+                        // If last character is an operator, replace it with '-'.
+                        recall.setText(text.substring(0, text.length() - 1) + "x");
+                    } else {
+                        // Otherwise, just append '-'.
+                        recall.append("x");
+                    }
+                }
                 calculatorExerciseObject.updateResult();
             }
         });
@@ -147,7 +187,20 @@ public class CalculatorExercise extends AppCompatActivity {
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recall.append("/");
+                String text = recall.getText().toString();
+                if (text.isEmpty()) {
+                    // If recall is empty, just append '-'.
+//                    recall.append("-");
+                } else {
+                    char lastChar = text.charAt(text.length() - 1);
+                    if (isOperator(lastChar)) {
+                        // If last character is an operator, replace it with '-'.
+                        recall.setText(text.substring(0, text.length() - 1) + "/");
+                    } else {
+                        // Otherwise, just append '-'.
+                        recall.append("/");
+                    }
+                }
                 calculatorExerciseObject.updateResult();
             }
         });
@@ -199,12 +252,16 @@ public class CalculatorExercise extends AppCompatActivity {
         }
     };
 
-        // Add getter methods for recall and result TextViews
+    // Add getter methods for recall and result TextViews
     public TextView getRecall() {
         return recall;
     }
 
     public TextView getResult() {
         return result;
+    }
+    public boolean isOperator(char a)
+    {
+        return  a == '*' || a == '-' || a == '/' || a == '+';
     }
 }
